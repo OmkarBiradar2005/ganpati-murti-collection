@@ -1,26 +1,10 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, CalendarHeart } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../data/siteConfig';
-import { useCountdown } from '../hooks/useCountdown';
-
-const countdownItems = [
-  { label: 'Days', key: 'days' },
-  { label: 'Hours', key: 'hours' },
-  { label: 'Minutes', key: 'minutes' },
-  { label: 'Seconds', key: 'seconds' },
-];
+import heroImageUrl from '../ganapati-hero.png';
 
 export const Hero = () => {
-  const { days, hours, minutes, seconds } = useCountdown(siteConfig.festivalDate);
-
-  const countdownValues = {
-    days,
-    hours,
-    minutes,
-    seconds,
-  };
-
   return (
     <section className="relative overflow-hidden bg-festive text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,.28),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,.08),transparent_25%)]" />
@@ -43,21 +27,15 @@ export const Hero = () => {
 
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }} className="relative z-10 flex items-center justify-center">
           <div className="glass-panel w-full max-w-xl rounded-[2rem] p-4 md:p-6">
-            <div className="rounded-[1.6rem] border border-white/10 bg-stone-950 p-6 text-white shadow-2xl">
-              <div className="flex items-center justify-between text-sm text-stone-300">
-                <span>Ganesh Chaturthi Countdown</span>
-                <span className="inline-flex items-center gap-1"><CalendarHeart size={16} /> Festive season</span>
-              </div>
-              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {countdownItems.map((item) => (
-                  <div key={item.label} className="rounded-3xl bg-white/5 p-4 text-center">
-                    <p className="text-3xl font-display font-bold">{String(countdownValues[item.key]).padStart(2, '0')}</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.3em] text-stone-400">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 rounded-3xl bg-gradient-to-r from-saffron-500/25 to-maroon-500/25 p-5 text-sm text-stone-100">
-                Custom photos, instant updates, and clean model numbering for easy booking.
+            <div className="overflow-hidden rounded-[1.6rem] border border-white/20 bg-stone-950 shadow-2xl">
+              <img
+                src={heroImageUrl}
+                alt="Ganapati Bappa murti"
+                loading="eager"
+                className="h-[420px] w-full object-cover"
+              />
+              <div className="bg-gradient-to-r from-stone-950 to-stone-900 px-6 py-4 text-sm text-stone-200">
+                Beautiful Ganapati Bappa murti collection for your festive celebration.
               </div>
             </div>
           </div>
